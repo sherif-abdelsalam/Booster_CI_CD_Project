@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build -t simple_python_app:latest .
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/simple_python_app:latest .
     
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     
     - name: Push the Docker image
-      run: docker push simple_python_app:latest
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/simple_python_app:latest
 
     
 
